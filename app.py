@@ -31,7 +31,7 @@ def register():
         user = User(username=form.username.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created. You can now log in!', 'success')
+        flash('Sua conta foi criada com sucesso!', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
@@ -44,7 +44,7 @@ def login():
             login_user(user)
             return redirect(url_for('todo'))
         else:
-            flash('Login failed. Please check your username and password', 'danger')
+            flash('Erro no Login. Por favor, cheque seus dados e tente novamente', 'danger')
     return render_template('login.html', form=form)
 
 @app.route('/logout')
@@ -84,4 +84,4 @@ def update(todo_id):
     return redirect(url_for('todo'))
 
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0', port=80)
+    app.run(debug=True, host='0.0.0.0', port=80)

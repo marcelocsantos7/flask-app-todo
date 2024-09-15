@@ -11,12 +11,12 @@
     <nav class="bg-blue-500 p-4 text-white">
         <div class="container mx-auto">
             <a href="{{ url_for('home') }}" class="mr-4">Home</a>
-            <a href="{{ url_for('todo') }}" class="mr-4">Todo List</a>
+            <a href="{{ url_for('todo') }}" class="mr-4">Lista de Alunos</a>
             {% if current_user.is_authenticated %}
                 <a href="{{ url_for('logout') }}" class="mr-4">Logout</a>
             {% else %}
                 <a href="{{ url_for('login') }}" class="mr-4">Login</a>
-                <a href="{{ url_for('register') }}" class="mr-4">Register</a>
+                <a href="{{ url_for('register') }}" class="mr-4">Registrar</a>
             {% endif %}
         </div>
     </nav>
