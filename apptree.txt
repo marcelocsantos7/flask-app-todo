@@ -1,0 +1,12 @@
+flask_todo/
+│
+├── app.py              # Main application file
+├── models.py           # Database models
+├── forms.py            # Form definitions
+├── templates/          # HTML templates
+├── templates/          # HTML templates
+│   ├── base.html
+│   ├── login.html
+│   ├── register.html
+│   └── todo.html
+└── todo.db             # SQLite database file (auto-created)

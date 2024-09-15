@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="text-4xl font-bold mb-4">Welcome to the Flask TODO App!</h1>
+        <p class="text-lg">This is a simple TODO list application with user authentication.</p>
+        {% if current_user.is_authenticated %}
+            <p class="mt-4 text-lg">Hello, <span class="font-semibold">{{ current_user.username }}</span>! Go to your <a href="{{ url_for('todo') }}" class="text-blue-500 underline">TODO list</a>.</p>
+        {% else %}
+            <p class="mt-4">
+                <a href="{{ url_for('login') }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Login</a>
+                <a href="{{ url_for('register') }}" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 ml-2">Register</a>
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

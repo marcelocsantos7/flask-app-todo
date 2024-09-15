@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Todo List{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Todo List</h2>
+    <form method="POST" action="" class="mb-4">
+        {{ form.hidden_tag() }}
+        <div class="mb-4">
+            {{ form.task(class="w-full p-2 border rounded") }}
+        </div>
+        <div>
+            {{ form.submit(class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600") }}
+        </div>
+    </form>
+
+    <ul class="list-disc pl-5">
+        {% for todo in todos %}
+            <li class="mb-2">
+                <form method="POST" action="{{ url_for('update', todo_id=todo.id) }}" class="inline">
+                    <input type="text" name="task" value="{{ todo.task }}" class="border p-2 rounded">
+                    <button type="submit" class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600">Update</button>
+                    <a href="{{ url_for('delete', todo_id=todo.id) }}" class="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-600 ml-2">Delete</a>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
