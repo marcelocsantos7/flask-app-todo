@@ -8,6 +8,7 @@ from forms import RegistrationForm, LoginForm, TodoForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+app.config
 
 db.init_app(app)
 bcrypt = Bcrypt(app)
@@ -16,7 +17,7 @@ login_manager.login_view = 'login'
 
 @app.route('/')
 def home():
-    return render_template('register.html')
+    return render_template('home.html')
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -83,4 +84,4 @@ def update(todo_id):
     return redirect(url_for('todo'))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0', port=80)
